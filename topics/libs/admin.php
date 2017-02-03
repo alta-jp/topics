@@ -1048,7 +1048,7 @@ class admin
         global $mode;
 
         $menu = '<ul class="wat-cf">';
-        $menu .= '<li><a href="">登録済みリスト</a></li>';
+        $menu .= '<li><a href="?">登録済みリスト</a></li>';
         $menu .= '<li><a href="?mode=regist">新規登録</a></li>';
         $menu .= '<li><a href="?mode=htmlrenew">HTMLファイル更新</a></li>';
         $menu .= '</ul>';
