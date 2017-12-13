@@ -257,20 +257,12 @@ class admin
             $this->error("ファイルサイズがサイズが小さいです。<br /><br />アップロード可能サイズは ${up_filesizelimit_lower}KB 以上 ${up_filesizelimit_upper} までです。");
             $this->render();
         }
-
-        $upfile_name = explode(".", $_FILES['userfile']['name']);
-
-        if (!in_array($upfile_name[1], $setextension)) {
-
-            for ($i = 0; $i < count($setextension); $i++) {
-                $html .= $setextension[$i] . " ";
-            }
-
+        $upfile_name = explode(".", $_FILES['userfile']['name']);
+        if (!in_array(strtolower($upfile_name[1]), array_map('strtolower', $setextension))) {
+            $html .= implode(" ",$setextension);
             $this->error("画像タイプに誤りがあります。<br /><br />アップロードできる画像の拡張子は『${html}』のみです。");
             $this->render();
         }
-
-
         $mictime = microtime();
         $fname = substr($mictime, 11, 10) . substr($mictime, 2, 3);
 
